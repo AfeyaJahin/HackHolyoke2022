@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lending_app/home/home.dart';
 import 'package:lending_app/login/bloc/bloc.dart';
 import 'package:lending_app/products/products.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'login/view/register_page.dart';
 
@@ -20,7 +21,12 @@ class MyApp extends StatelessWidget {
       title: 'Cup Of Sugar',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: GoogleFonts.lancelotTextTheme(),
         primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromRGBO(135, 166, 130, 54),
+          elevation: 0,
+        ),
       ),
       home: MultiBlocProvider(
         providers: [

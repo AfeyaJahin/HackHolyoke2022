@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lending_app/shared_widgets.dart';
 
 /// {@template home_body}
 /// Body of the HomePage.
@@ -11,6 +12,17 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('HomePage');
+    return Scaffold(
+      body: Column(
+        children: const [
+          AuthAppBar(),
+          Expanded(
+            child: Center(
+              child: Text('Home Page'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
