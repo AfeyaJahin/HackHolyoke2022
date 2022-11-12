@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ledning_app/products/bloc/bloc.dart';
-import 'package:ledning_app/products/widgets/products_body.dart';
+import 'package:lending_app/products/bloc/bloc.dart';
+import 'package:lending_app/products/widgets/products_body.dart';
 
 /// {@template products_page}
 /// A description for ProductsPage
@@ -22,7 +22,7 @@ class ProductsPage extends StatelessWidget {
         body: ProductsView(),
       ),
     );
-  }    
+  }
 }
 
 /// {@template products_view}

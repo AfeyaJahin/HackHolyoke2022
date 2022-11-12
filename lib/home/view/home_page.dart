@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ledning_app/home/widgets/home_body.dart';
+import 'package:lending_app/home/widgets/home_body.dart';
 
 /// {@template home_page}
 /// A description for HomePage
@@ -12,13 +12,13 @@ class HomePage extends StatelessWidget {
   static Route<dynamic> route() {
     return MaterialPageRoute<dynamic>(builder: (_) => const HomePage());
   }
-   
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: HomeView(),
     );
-  } 
+  }
 }
 
 /// {@template home_view}

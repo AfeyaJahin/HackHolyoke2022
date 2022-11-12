@@ -1,4 +1,4 @@
-# ledning_app
+# lending_app
 
 HackHolyoke 2022
 

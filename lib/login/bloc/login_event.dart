@@ -8,3 +8,7 @@ abstract class LoginEvent {
 /// Event added when some custom logic happens
 /// {@endtemplate}
 class CustomLoginEvent extends LoginEvent {}
+
+class InitializeEvent extends LoginEvent {
+  const InitializeEvent();
+}

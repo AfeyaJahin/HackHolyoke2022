@@ -32,3 +32,15 @@ class LoginInitial extends LoginState {
   /// {@macro login_initial}
   const LoginInitial() : super();
 }
+
+class LoggedIn extends LoginState {
+  const LoggedIn() : super();
+}
+
+class LoggedOut extends LoginState {
+  const LoggedOut() : super();
+}
+
+class Registering extends LoginState {
+  const Registering() : super();
+}
