@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ledning_app/products/bloc/bloc.dart';
+import 'package:lending_app/products/bloc/bloc.dart';
 
 /// {@template products_body}
 /// Body of the ProductsPage.

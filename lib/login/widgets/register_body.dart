@@ -6,9 +6,9 @@ import 'package:lending_app/login/bloc/bloc.dart';
 ///
 /// Add what it does
 /// {@endtemplate}
-class LoginBody extends StatelessWidget {
+class RegisterBody extends StatelessWidget {
   /// {@macro login_body}
-  const LoginBody({Key? key}) : super(key: key);
+  const RegisterBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
