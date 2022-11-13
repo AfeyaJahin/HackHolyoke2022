@@ -10,6 +10,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<InitializeEvent>(_onInitializeEvent);
     on<LoginNavEvent>(_onLoginNavEvent);
     on<RegisterNavEvent>(_onRegisterNavEvent);
+    on<LoginSuccessEvent>(_onLoginSuccessEvent);
   }
 
   FutureOr<void> _onInitializeEvent(
@@ -32,5 +33,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) {
     emit(const Registering());
+  }
+
+  FutureOr<void> _onLoginSuccessEvent(
+    LoginSuccessEvent event,
+    Emitter<LoginState> emit,
+  ) {
+    emit(const LoggedIn());
   }
 }

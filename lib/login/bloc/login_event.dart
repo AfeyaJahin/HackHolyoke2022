@@ -20,3 +20,7 @@ class LoginNavEvent extends LoginEvent {
 class RegisterNavEvent extends LoginEvent {
   const RegisterNavEvent();
 }
+
+class LoginSuccessEvent extends LoginEvent {
+  const LoginSuccessEvent();
+}
