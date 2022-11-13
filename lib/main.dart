@@ -4,8 +4,15 @@ import 'package:lending_app/login/login.dart';
 import 'package:lending_app/products/products.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:developer' as devtools show log;
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
