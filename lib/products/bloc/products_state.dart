@@ -32,3 +32,18 @@ class ProductsInitial extends ProductsState {
   /// {@macro products_initial}
   const ProductsInitial() : super();
 }
+
+class CartState extends ProductsState {
+  const CartState();
+  // const CartState({
+  // required this.cart,
+  // required this.total,
+  // }) : super();
+
+  // final List<Item> cart;
+  // final double total;
+}
+
+class CheckOutState extends ProductsState {
+  const CheckOutState();
+}

@@ -3,6 +3,7 @@ export 'products_body.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lending_app/models/item.dart';
+import 'package:lending_app/products/bloc/bloc.dart';
 
 class ProductSellPage extends StatefulWidget {
   const ProductSellPage({Key? key}) : super(key: key);
@@ -76,12 +77,14 @@ class _ProductSellPageState extends State<ProductSellPage> {
           ],
         ),
         leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 10),
           child: Image.asset('images/logo.png', fit: BoxFit.contain),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<ProductsBloc>().add(const ShoppingCartEvent());
+            },
             icon: const Icon(
               Icons.shopping_cart,
               color: Colors.black,
