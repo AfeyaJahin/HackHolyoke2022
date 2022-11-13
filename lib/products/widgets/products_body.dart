@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lending_app/products/bloc/bloc.dart';
+import 'package:lending_app/products/products.dart';
 
 /// {@template products_body}
 /// Body of the ProductsPage.
@@ -14,7 +14,7 @@ class ProductsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-        return Text(state.customProperty);
+        return const ProductSellPage();
       },
     );
   }

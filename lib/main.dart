@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
           BlocProvider<LoginBloc>(
             create: (context) => LoginBloc(),
           ),
+          BlocProvider<ProductsBloc>(
+            create: (context) => ProductsBloc(),
+          )
         ],
         child: const BlocNav(),
       ),
@@ -45,7 +48,7 @@ class BlocNav extends StatelessWidget {
   const BlocNav({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    context.read<LoginBloc>().add(const InitializeEvent());
+    context.read<LoginBloc>().add(const LoginSuccessEvent());
     return BlocBuilder<LoginBloc, LoginState>(builder: ((context, state) {
       if (state is LoggedIn) {
         return const ProductsView();
