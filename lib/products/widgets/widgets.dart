@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lending_app/models/item.dart';
 import 'package:lending_app/products/bloc/bloc.dart';
 
+import '../../login/bloc/login_bloc.dart';
+
 class ProductSellPage extends StatefulWidget {
   const ProductSellPage({Key? key}) : super(key: key);
 
@@ -102,7 +104,9 @@ class _ProductSellPageState extends State<ProductSellPage> {
           ),
           const SizedBox(width: 10),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<LoginBloc>().add(const InitializeEvent());
+            },
             icon: const Icon(
               Icons.person_rounded,
               color: Colors.black,
