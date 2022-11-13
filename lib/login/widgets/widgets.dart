@@ -611,7 +611,12 @@ class _LoginDesktopState extends State<LoginDesktop> {
                 ),
                 const SizedBox(height: 30),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // TODO
+                    context.read<LoginBloc>().add(
+                          const LoginSuccessEvent(),
+                        );
+                  },
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.green,
                     padding: const EdgeInsets.symmetric(

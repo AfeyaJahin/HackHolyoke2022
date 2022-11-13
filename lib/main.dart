@@ -32,9 +32,10 @@ class MyApp extends StatelessWidget {
             // ignore: use_full_hex_values_for_flutter_colors
             MaterialColor(0x09C2AE, getSwatch(const Color(0x09C2AE))),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color.fromRGBO(135, 166, 130, 54),
+          backgroundColor: Color.fromRGBO(135, 166, 130, 0.21),
           elevation: 0,
         ),
+        scaffoldBackgroundColor: const Color.fromARGB(53, 232, 234, 222),
       ),
       home: MultiBlocProvider(
         providers: [
@@ -55,10 +56,10 @@ class BlocNav extends StatelessWidget {
   const BlocNav({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    context.read<LoginBloc>().add(const LoginNavEvent());
+    context.read<LoginBloc>().add(const InitializeEvent());
     return BlocBuilder<LoginBloc, LoginState>(builder: ((context, state) {
       if (state is LoggedIn) {
-        return const ProductsView();
+        return const ProductsPage();
       } else if (state is Registering) {
         return const RegisterView();
       } else if (state is LoggedOut) {
