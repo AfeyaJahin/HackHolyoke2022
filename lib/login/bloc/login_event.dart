@@ -12,3 +12,15 @@ class CustomLoginEvent extends LoginEvent {}
 class InitializeEvent extends LoginEvent {
   const InitializeEvent();
 }
+
+class LoginNavEvent extends LoginEvent {
+  const LoginNavEvent();
+}
+
+class RegisterNavEvent extends LoginEvent {
+  const RegisterNavEvent();
+}
+
+class LoginSuccessEvent extends LoginEvent {
+  const LoginSuccessEvent();
+}

@@ -4,7 +4,22 @@ abstract class ProductsEvent {
   const ProductsEvent();
 }
 
-/// {@template custom_products_event}
-/// Event added when some custom logic happens
-/// {@endtemplate}
-class CustomProductsEvent extends ProductsEvent {}
+class AddProductEvent extends ProductsEvent {
+  const AddProductEvent();
+}
+
+class RemoveProductEvent extends ProductsEvent {
+  const RemoveProductEvent();
+}
+
+class ShoppingCartEvent extends ProductsEvent {
+  const ShoppingCartEvent();
+}
+
+class GoToCheckOutEvent extends ProductsEvent {
+  const GoToCheckOutEvent();
+}
+
+class FinishEvent extends ProductsEvent {
+  const FinishEvent();
+}

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lending_app/products/bloc/bloc.dart';
+import 'package:lending_app/products/products.dart';
+import 'package:lending_app/products/view/shopping_cart.dart';
+
+import '../view/confirm_order.dart';
 
 /// {@template products_body}
 /// Body of the ProductsPage.
@@ -14,7 +17,14 @@ class ProductsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-        return Text(state.customProperty);
+        if (state is ProductsInitial) {
+          return const ProductSellPage();
+        } else if (state is CartState) {
+          return const ShoppingCart();
+        } else if (state is CheckOutState) {
+          return const ConfirmOrder();
+        }
+        return const ProductSellPage();
       },
     );
   }

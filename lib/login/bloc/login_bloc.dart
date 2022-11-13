@@ -7,13 +7,38 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(const LoginInitial()) {
-    on<CustomLoginEvent>(_onCustomLoginEvent);
+    on<InitializeEvent>(_onInitializeEvent);
+    on<LoginNavEvent>(_onLoginNavEvent);
+    on<RegisterNavEvent>(_onRegisterNavEvent);
+    on<LoginSuccessEvent>(_onLoginSuccessEvent);
   }
 
-  FutureOr<void> _onCustomLoginEvent(
-    CustomLoginEvent event,
+  FutureOr<void> _onInitializeEvent(
+    InitializeEvent event,
     Emitter<LoginState> emit,
   ) {
-    // TODO: Add Logic
+    // TODO: Firebase Initialization
+    emit(const LoggedOut());
+  }
+
+  FutureOr<void> _onLoginNavEvent(
+    LoginNavEvent event,
+    Emitter<LoginState> emit,
+  ) {
+    emit(const LoggingIn());
+  }
+
+  FutureOr<void> _onRegisterNavEvent(
+    RegisterNavEvent event,
+    Emitter<LoginState> emit,
+  ) {
+    emit(const Registering());
+  }
+
+  FutureOr<void> _onLoginSuccessEvent(
+    LoginSuccessEvent event,
+    Emitter<LoginState> emit,
+  ) {
+    emit(const LoggedIn());
   }
 }
