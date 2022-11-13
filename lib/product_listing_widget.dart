@@ -1,27 +1,28 @@
+// need to create/modify app theme for lending app
 import 'package:easy_debounce/easy_debounce.dart';
-// need to create app theme for lending app
-import 'package:lending_app/app_theme.dart';
-import 'package:lending_app/bloc/event/cart_event.dart';
-import 'package:lending_app/widgets/product_list.dart';
+import 'package:ecomm_app/app_theme.dart';
+import 'package:ecomm_app/bloc/event/cart_event.dart';
+import 'package:ecomm_app/widgets/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // for cart
 import 'bloc/cart_bloc.dart';
 import 'bloc/state/cart_state.dart';
-import 'models/products.dart';
+import 'models/product.dart';
 
-class ProductListingWidget extends StatefulWidget{
+class ProductListingWidget extends StatefulWidget {
   const ProductListingWidget({Key? key}) : super(key: key);
-  
-  @override 
+
+  @override
   _ProductListingWidgetState createState() => _ProductListingWidgetState();
 }
 
 // TO DO: style UI, change colors and text (App Theme and in code)
-class ProductListingWidget extends State<ProductListingWidget> {
+class _ProductListingWidgetState extends State<ProductListingWidget> {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  bool isSearchStarted = false;
 
   // product list
   // consider replacing with read from database
@@ -31,22 +32,103 @@ class ProductListingWidget extends State<ProductListingWidget> {
   final List<Product> products = [
     Product(
         id: 1,
-        name: 'Champion',
+        name: 'Cracking the Coding Interview',
+        category: 'books',
         image:
-            'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80',
-        price: 55.5),
+            'https://i.ebayimg.com/images/g/OQ4AAOSweXdfBiAy/s-l500.jpg',
+        price: 10,
+        period: 'week',
+        condition: 'fair',
+        lenderName: 'Angel Ebebi',
+        lenderContact: 'angel24e@mtholyoke.edu'),
     Product(
         id: 2,
-        name: 'Stark',
+        name: 'Introduction to Algorithms',
+        category: 'books',
         image:
-            'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1624&q=80',
-        price: 65.5),
+            'https://medium.com/craft-academy/introduction-to-algorithms-chapter-two-part-one-fe76fe513024',
+        price: 2,
+        period: '1 day',
+        condition: 'fair',
+        lenderName: 'Mary Lyon',
+        lenderContact: 'lyon18m@mtholyoke.edu'),
     Product(
         id: 3,
-        name: 'Coloury',
+        name: 'Girl Decoded',
+        category: 'books',
         image:
-            'https://images.unsplash.com/photo-1604671801908-6f0c6a092c05?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-        price: 75.5),
+            'https://m.media-amazon.com/images/I/71rbFzJKahL._CR0,133,800,800_UX256.jpg',
+        price: 0,
+        period: 'week',
+        condition: 'new',
+        lenderName: 'Mary Lyon',
+        lenderContact: 'lyon18m@mtholyoke.edu'),
+    Product(
+        id: 4,
+        name: 'Dr. Martens',
+        category: 'clothes',
+        image:
+            'https://i.etsystatic.com/8377697/r/il/3a3ec3/4321900376/il_794xN.4321900376_ad4s.jpg',
+        price: 3,
+        period: '2 days',
+        condition: 'used',
+        lenderName: 'Mary Lyon',
+        lenderContact: 'lyon18m@mtholyoke.edu'),
+    Product(
+        id: 5,
+        name: 'Baking Sheet',
+        category: 'cooking',
+        image:
+            'https://i.ebayimg.com/images/g/qBQAAOSwOaperLsR/s-l500.jpg',
+        price: 0,
+        period: '3 days',
+        condition: 'used',
+        lenderName: 'Mary Lyon',
+        lenderContact: 'lyon18m@mtholyoke.edu'),
+    Product(
+        id: 6,
+        name: 'Calculus I Tutoring',
+        category: 'tutoring',
+        image:
+            'https://cdntrust.s3.us-east-2.amazonaws.com/images/247a5dff-c606-436a-bdb3-8d8caf66e1f6.jpg',
+        price: 15,
+        period: '1',
+        condition: 'great',
+        lenderName: 'Mary Lyon',
+        lenderContact: 'lyon18m@mtholyoke.edu'),
+    Product(
+        id: 7,
+        name: 'Ride to Bradley',
+        category: 'transportation',
+        image:
+            'https://www.afoodiestaysfit.com/wp-content/uploads/2020/06/9A9E9994-FADE-4B2A-BC7E-87C855E25D85.jpg',
+        price: 45,
+        period: '1 ride',
+        condition: '',
+        lenderName: 'Mary Lyon',
+        lenderContact: 'lyon18m@mtholyoke.edu'),
+    Product(
+        id: 8,
+        name: 'Dog Walking',
+        category: 'Pet Services',
+        image:
+            'https://i.guim.co.uk/img/media/73658dd39bf0d9cbee60add383acd3edccef4955/0_318_5340_3205/master/5340.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=28481a15a5a72f76fa029fc867771958',
+        price: 5,
+        period: '1 hour',
+        condition: 'great',
+        lenderName: 'Mary Lyon',
+        lenderContact: 'lyon18m@mtholyoke.edu'),
+    Product(
+        id: 9,
+        name: 'Hair Braiding',
+        category: 'beauty',
+        image:
+            'https://i.pinimg.com/736x/ba/37/69/ba3769a87413aa933f935ecb27913472.jpg',
+        price: 50,
+        period: '3 hours',
+        condition: 'great',
+        lenderName: 'Mary Lyon',
+        lenderContact: 'lyon18m@mtholyoke.edu'),
   ];
 
   @override

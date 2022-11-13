@@ -6,9 +6,10 @@ import 'package:lending_app/products/products.dart';
 import 'login/view/register_page.dart';
 
 // import packages for product and cart
-import 'package:lending_app/bloc/cart_bloc.dart';
-import 'package:lending_app/product_listing_widget.dart';
+import 'package:ecomm_app/bloc/cart_bloc.dart';
+import 'package:ecomm_app/product_listing_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'bloc_observer.dart';
 
 void main() {
@@ -22,20 +23,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    WidgetsFlutterBinding.ensureInitialized();
-    return: MultiBlocProvider(
+    return MultiBlocProvider(
       providers: [
         BlocProvider<CartBloc>(
           create: (BuildContext context) => CartBloc(),
         ),
       ],
       child: MaterialApp(
-        title: 'Cup Of Sugar',
+        title: 'Cup of Sugar',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ProductListWidget(),
+        home: ProductListingWidget(),
       ),
     );
   }
