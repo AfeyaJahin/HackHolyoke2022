@@ -71,7 +71,7 @@ class HomeBody extends StatelessWidget {
         body: Stack(
           children: [
             Align(
-                alignment: const Alignment(1, 0.2),
+                alignment: const Alignment(1, 0.4),
                 child: Image(
                     width: width / 2,
                     height: height * 0.7,
@@ -79,7 +79,7 @@ class HomeBody extends StatelessWidget {
                       'images/home_img.png',
                     ))),
             Align(
-              alignment: const Alignment(0, -1),
+              alignment: const Alignment(0, -0.9),
               child: Text(
                 'WELCOME TO CUP OF SUGAR',
                 style: Theme.of(context).textTheme.headline2,
