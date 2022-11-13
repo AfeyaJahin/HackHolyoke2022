@@ -31,7 +31,7 @@ class Item {
 
   static get f {
     return const Item('Ride to Bradley Airport', '45',
-        'https://m.media-amazon.com/images/I/810HhM5SC6L._AC_SL1500_.jpg');
+        'https://www.goget.com.au/wp-content/uploads/2018/05/Three-young-people-sharing-the-back-seat-of-a-car-carpooling-their-way-to-work-this-is-carpooling-rather-than-car-sharing-what-is-carpool.jpg');
   }
 
   static List<Item> get getItems {
