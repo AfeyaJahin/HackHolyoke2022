@@ -49,7 +49,7 @@ class BlocNav extends StatelessWidget {
   const BlocNav({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    context.read<LoginBloc>().add(const LoginSuccessEvent());
+    context.read<LoginBloc>().add(const InitializeEvent());
     return BlocBuilder<LoginBloc, LoginState>(builder: ((context, state) {
       if (state is LoggedIn) {
         return const ProductsPage();
