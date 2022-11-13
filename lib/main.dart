@@ -55,7 +55,7 @@ class BlocNav extends StatelessWidget {
   const BlocNav({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    context.read<LoginBloc>().add(const LoginSuccessEvent());
+    context.read<LoginBloc>().add(const LoginNavEvent());
     return BlocBuilder<LoginBloc, LoginState>(builder: ((context, state) {
       if (state is LoggedIn) {
         return const ProductsView();
@@ -74,6 +74,44 @@ class BlocNav extends StatelessWidget {
     }));
   }
 }
+
+// Code that I had for setting up auth, donno how to integrate to yours
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiProvider(
+//       providers: [
+//         Provider<AuthenticationService>(
+//           create: (_) => AuthenticationService(FirebaseAuth.instance),
+//         ),
+//         StreamProvider(
+//           create: (context) =>
+//               context.read<AuthenticationService>().authStateChanges,
+//         )
+//       ],
+//       child: MaterialApp(
+
+//         // whatever code you had for child
+//         ),
+//         home: AuthenticationWrapper(),
+//       ),
+//     );
+//   }
+// }
+
+// authentication class to check if the user is registered
+// display homepage if yes, display loginpage if not
+// class AuthenticationWrapper extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     final firebaseUser = context.watch<User>();
+
+//     if (firebaseUser != null) {
+//       return const HomePage();
+//     }
+//     return const LoginPage();
+//   }
+// }
 
 Map<int, Color> getSwatch(Color color) {
   final hslColor = HSLColor.fromColor(color);
