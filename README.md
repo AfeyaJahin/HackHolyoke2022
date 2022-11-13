@@ -7,21 +7,8 @@ Angel and I spotted a  “Rent-a-Rider” flyer posted by the riding team and re
 ### What it does
 “Cup of Sugar” is a one-stop platform that offers community members a variety of ways to fundraise: loan items they don’t use often, sell items (i.e. - handmade jewelry or buttons), offer services like rides or tutoring, or simply lend items for free in the spirit of mutual aid.  Lenders/sellers can list whatever they are offering, goods or services in our main feed using the plus buttons - which asks for more information (picture, category and pricing) and puts that entry into our database. Borrowers/buyers can search for specific items as well as filter by category to find what they are looking for. Then, Borrowers/buyers can add everything that they need to their cart, add payment information, and checkout. At checkout, they are prompted to select a mutual aid of their choice that they want to contribute to. 25% of the transaction goes directly to the mutual aid, while the 75% goes to the buyer/lender’s account. 
 
-## Folder Structure of the project and implementation of BloC design pattern 
+## Folder Structure of the project and implementation of BloC design pattern
 
-'''├───home
-│   ├───view
-│   └───widgets
-├───login
-│   ├───bloc
-│   ├───view
-│   └───widgets
-├───models
-└───products
-    ├───bloc
-    ├───view
-    └───widgets'''
-    
 2 different BLoCs were used to handle the navigation and business logic within the app. LoginBloc handles the FireBase Authentication backend and navigation between the homepage, login, and registration pages, while ProductsBloc deals with the marketplace. Event handling in terms of adding or removing items from the cart, calculating the final checkout amount, and filtering is done here. Every major page group has its own view, widgets, and may have its own state management. we follow the BLoC state management pattern, which has the core philosophy of dealing with business logic in terms of states and actions. The home screen is a state, a login screen is a state; pressing the login button is an action. Each action triggers an event handler which either updates a value (in the case of a number of marketplace events), or changes a state (LoginSuccess for example)
 
 ### 🔧 Built using (Technologies & Tools)
