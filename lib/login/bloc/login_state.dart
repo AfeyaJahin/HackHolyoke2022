@@ -44,3 +44,7 @@ class LoggedOut extends LoginState {
 class Registering extends LoginState {
   const Registering() : super();
 }
+
+class LoggingIn extends LoginState {
+  const LoggingIn() : super();
+}

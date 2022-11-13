@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lending_app/login/bloc/bloc.dart';
+import 'package:lending_app/login/widgets/widgets.dart';
 
 /// {@template login_body}
 /// Body of the LoginPage.
@@ -14,7 +15,21 @@ class LoginBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
-        return Text(state.customProperty);
+        return Scaffold(
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              // if (constraints.maxWidth < 600) {
+              //   return const LoginMobile();
+              // } else if (constraints.maxWidth > 600 &&
+              //     constraints.maxWidth < 900) {
+              //   return const LoginTablet();
+              // } else {
+              return const LoginDesktop();
+              // }
+            },
+          ),
+          bottomNavigationBar: const BottomRegisterBar(),
+        );
       },
     );
   }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lending_app/home/home.dart';
-import 'package:lending_app/login/bloc/bloc.dart';
+import 'package:lending_app/login/login.dart';
 import 'package:lending_app/products/products.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'login/view/register_page.dart';
+import 'dart:developer' as devtools show log;
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +43,7 @@ class BlocNav extends StatelessWidget {
   const BlocNav({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    context.read<LoginBloc>().add(const InitializeEvent());
+    context.read<LoginBloc>().add(const LoginNavEvent());
     return BlocBuilder<LoginBloc, LoginState>(builder: ((context, state) {
       if (state is LoggedIn) {
         return const ProductsView();
@@ -52,7 +51,10 @@ class BlocNav extends StatelessWidget {
         return const RegisterView();
       } else if (state is LoggedOut) {
         return const HomePage();
+      } else if (state is LoggingIn) {
+        return const LoginPage();
       } else {
+        devtools.log(state.toString());
         return const Scaffold(
           body: CircularProgressIndicator(),
         );
