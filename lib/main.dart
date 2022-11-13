@@ -4,8 +4,15 @@ import 'package:lending_app/login/login.dart';
 import 'package:lending_app/products/products.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:developer' as devtools show log;
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -68,6 +75,44 @@ class BlocNav extends StatelessWidget {
     }));
   }
 }
+
+// Code that I had for setting up auth, donno how to integrate to yours
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiProvider(
+//       providers: [
+//         Provider<AuthenticationService>(
+//           create: (_) => AuthenticationService(FirebaseAuth.instance),
+//         ),
+//         StreamProvider(
+//           create: (context) =>
+//               context.read<AuthenticationService>().authStateChanges,
+//         )
+//       ],
+//       child: MaterialApp(
+
+//         // whatever code you had for child
+//         ),
+//         home: AuthenticationWrapper(),
+//       ),
+//     );
+//   }
+// }
+
+// authentication class to check if the user is registered
+// display homepage if yes, display loginpage if not
+// class AuthenticationWrapper extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     final firebaseUser = context.watch<User>();
+
+//     if (firebaseUser != null) {
+//       return const HomePage();
+//     }
+//     return const LoginPage();
+//   }
+// }
 
 Map<int, Color> getSwatch(Color color) {
   final hslColor = HSLColor.fromColor(color);
